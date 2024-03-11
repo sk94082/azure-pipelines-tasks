@@ -14,7 +14,7 @@ export class ContainerRegistryHelper {
         tl.debug(`Attempting to log in to ACR instance "${acrName}" with username and password credentials`);
         try {
             child.execSync(
-                `docker login --password-stdin --username ${acrUsername} ${acrName}.azurecr.io`,
+                `docker login --password-stdin --username ${acrUsername} ${acrName.toLowerCase()}.azurecr.io`,
                 { input: acrPassword });
         } catch (err) {
             tl.error(tl.loc('AcrUsernamePasswordAuthFailed', acrName));
